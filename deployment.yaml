@@ -1,5 +1,5 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: helloserver-service
 spec:
@@ -18,7 +18,7 @@ metadata:
   labels:
     app: helloserver
 spec:
-  #replicas: 1
+  replicas: 1
   selector:
     matchLabels:
       app: helloserver
@@ -27,10 +27,8 @@ spec:
       labels:
         app: helloserver
     spec:
-      imagePullSecrets:
-      - name: pipeline-docker-registry
       containers:
-      - name: helloserver
+      - name: go
         image: image: giaple/demogo:latest
         ports:
         - containerPort: 80
