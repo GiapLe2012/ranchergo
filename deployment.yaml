@@ -35,6 +35,10 @@ spec:
       - name: node
         #image: ichte/swarmtest:node
         image: giaple/demogo:latest
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
         ports:
           - containerPort: 81
 ---          
