@@ -14,21 +14,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-go
-  labels:
-    app: goserver
+  # tên của deployment
+  name: go-example
 spec:
+  # số POD tạo ra
   replicas: 1
+  # thiết lập các POD do deploy quản lý, là POD có nhãn  "app=deployapp"
   selector:
     matchLabels:
-      app: goserver
+      app: go-example
+
+  # Định nghĩa mẫu POD, khi cần Deploy sử dụng mẫu này để tạo Pod
   template:
     metadata:
+      name: podapp-go
       labels:
-        app: goserver
+        app: go-example
     spec:
       containers:
-      - name: go
-        image: image: giaple/demogo:latest
+      - name: node
+        #image: ichte/swarmtest:node
+        image: giaple/demogo:latest
         ports:
-        - containerPort: 81
+          - containerPort: 81
