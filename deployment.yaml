@@ -39,7 +39,7 @@ spec:
           - containerPort: 81
 ---          
 #namespace
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: giaplv-app-go 
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: giaplv-app-go 
