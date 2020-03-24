@@ -22,7 +22,7 @@ spec:
   # thiết lập các POD do deploy quản lý, là POD có nhãn  "app=deployapp"
   selector:
     matchLabels:
-      app: go-example
+      app: go-example-app
 
   # Định nghĩa mẫu POD, khi cần Deploy sử dụng mẫu này để tạo Pod
   template:
@@ -37,3 +37,9 @@ spec:
         image: giaple/demogo:latest
         ports:
           - containerPort: 81
+---          
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: giaplv-app-go 
