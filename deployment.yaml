@@ -4,43 +4,34 @@ metadata:
   name: go-service
 spec:
   selector:
-    app: goserver
+    app: goApp
   type: NodePort
   ports:
     - protocol: TCP
-      port: 81
-      targetPort: 81
+      port: 8081
+      targetPort: 8081
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  # tên của deployment
-  name: go-example
+  name: go-deployment
+  labels:
+    app: go
 spec:
-  # số POD tạo ra
   replicas: 1
-  # thiết lập các POD do deploy quản lý, là POD có nhãn  "app=deployapp"
   selector:
     matchLabels:
-      app: go-example
-
-  # Định nghĩa mẫu POD, khi cần Deploy sử dụng mẫu này để tạo Pod
+      app: go
   template:
     metadata:
-      name: podapp-go
       labels:
-        app: go-example
+        app: go
     spec:
       containers:
-      - name: node
-        #image: ichte/swarmtest:node
+      - name: go
         image: giaple/gotest:latest
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "1000m"
         ports:
-          - containerPort: 81
+        - containerPort: 8081
 ---          
 #namespace
 apiVersion: v1
