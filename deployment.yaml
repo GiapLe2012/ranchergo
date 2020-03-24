@@ -18,7 +18,7 @@ metadata:
   name: go-example
 spec:
   # số POD tạo ra
-  replicas: 2
+  replicas: 1
   # thiết lập các POD do deploy quản lý, là POD có nhãn  "app=deployapp"
   selector:
     matchLabels:
@@ -43,7 +43,17 @@ spec:
           - containerPort: 81
 ---          
 #namespace
-#apiVersion: v1
-#kind: Namespace
-#metadata:
-#  name: giaplv-app-go 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: giaplv-app-go 
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-demo
+spec:
+  containers:
+  - name: go-demo
+    image: debian
+    terminationMessagePath: "/tmp/my-log"
