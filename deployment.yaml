@@ -34,7 +34,7 @@ spec:
       containers:
       - name: node
         #image: ichte/swarmtest:node
-        image: giaple/demogo:latest
+        image: giaple/gotest:latest
         resources:
           limits:
             memory: "512Mi"
@@ -48,12 +48,12 @@ kind: Namespace
 metadata:
   name: giaplv-app-go 
 ---
-apiVersion: v1
-kind: Pod
-metadata:
-  name: go-demo
-spec:
-  containers:
-  - name: go-demo
-    image: debian
-    terminationMessagePath: "/tmp/my-log"
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: go-demo
+#spec:
+#  containers:
+#  - name: go-demo
+#    image: debian
+#    terminationMessagePath: "/tmp/my-log"

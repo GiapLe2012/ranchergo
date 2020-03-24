@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     sh "docker login -u giaple -p P@ssw0rd123456"
-                    myapp = docker.build("giaple/demogo:${env.BUILD_ID}")
+                    myapp = docker.build("giaple/gotest:${env.BUILD_ID}")
                 }
             }
         }
@@ -25,15 +25,15 @@ pipeline {
                 script {
                     sh """
                     docker login -u giaple -p P@ssw0rd123456
-                    docker push giaple/demogo:${env.BUILD_ID}
-                    docker rmi giaple/demogo:${env.BUILD_ID}
+                    docker push giaple/gotest:${env.BUILD_ID}
+                    docker rmi giaple/gotest:${env.BUILD_ID}
                     """
                 }
             }
         }        
         stage('Deploy to Kubenetes-Local') {
             steps{
-                sh "sed -i 's/demogo:latest/demogo:${env.BUILD_ID}/g' deployment.yaml"
+                sh "sed -i 's/gotest:latest/gotest:${env.BUILD_ID}/g' deployment.yaml"
                 sh "kubectl apply -f deployment.yaml"
             }
         }
